@@ -39,7 +39,7 @@ foreach ($items as $item) {
 
     if (is_dir("{$currentPath}/{$item}")) {
         $data['folders'][] = "<a class=\"folder\" href=\"?folder=" . urlencode($url) . "\">📁 $encodedName</a>";
-    } elseif (strtolower(pathinfo($item, PATHINFO_EXTENSION)) === 'mp3') {
+    } elseif (in_array(strtolower(pathinfo($item, PATHINFO_EXTENSION)), ['mp3', 'm4a'])) {
         $data['mp3'][] = $item;
     } elseif ($displayFiles && (!empty($folder) || $item !== 'index.php')) {
         $data['files'][] = "<a class=\"folder\" href=\"$href\" target=\"_blank\">📄 $encodedName</a>";
